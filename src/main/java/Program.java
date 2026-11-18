@@ -9,14 +9,17 @@ void main() {
     linkedList.append(16);
     linkedList.append(48);
 
-    linkedList.getHead();
-    linkedList.getTail();
-    linkedList.getLength();
-    linkedList.printList();
+//    linkedList.getHead();
+//    linkedList.getTail();
+//    linkedList.getLength();
+//    linkedList.printList();
 
-    System.out.println("-------------------------------");
+//    System.out.println("-------------------------------");
 
-    linkedList.pop();
+//    linkedList.pop();
+
+    linkedList.prepend(31);
+
     linkedList.printList();
 }
 

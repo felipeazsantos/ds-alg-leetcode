@@ -46,11 +46,10 @@ public class MyLinkedList {
         Node newItem = new Node(value);
         if (this.length == 0) {
             this.head = newItem;
-            this.tail = newItem;
         } else {
             this.tail.next = newItem;
-            this.tail = newItem;
         }
+        this.tail = newItem;
         this.length++;
     }
 
@@ -75,5 +74,17 @@ public class MyLinkedList {
         this.length--;
     }
 
+    public void prepend(int value) {
+        Node newItem = new Node(value);
+        if (this.length == 0) {
+            this.head = newItem;
+            this.tail = newItem;
+        } else {
+            Node temp = this.head;
+            this.head = newItem;
+            this.head.next = temp;
+        }
+        this.length++;
+    }
 
 }
