@@ -71,6 +71,8 @@ public class MyLinkedList {
             temp.next = null;
             this.tail = temp;
         }
+
+        this.length--;
     }
 
 
