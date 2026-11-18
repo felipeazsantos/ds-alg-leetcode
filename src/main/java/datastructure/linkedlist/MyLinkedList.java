@@ -54,5 +54,24 @@ public class MyLinkedList {
         this.length++;
     }
 
+    public void pop() {
+        if (this.length == 0) {
+            return;
+        }
+
+        if (this.length == 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            Node temp = this.head;
+            while (temp.next != this.tail) {
+                temp = temp.next;
+            }
+
+            temp.next = null;
+            this.tail = temp;
+        }
+    }
+
 
 }
