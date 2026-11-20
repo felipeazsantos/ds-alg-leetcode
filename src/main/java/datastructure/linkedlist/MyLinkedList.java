@@ -116,18 +116,37 @@ public class MyLinkedList {
             }
             return temp;
         }
-        throw new IndexOutOfBoundsException("index not found");
+        return null;
     }
 
     public boolean set(int index, int value) {
-        try {
-            Node node = this.get(index);
+        Node node = this.get(index);
+        if (node != null) {
             node.value = value;
             return true;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return false;
         }
+        return false;
+    }
+
+    public boolean insert(int index, int value) {
+        if (index < 0 || index > this.length - 1) return false;
+        if (index == 0) {
+            prepend(value);
+            return true;
+        }
+
+        if (index == this.length - 1) {
+            this.append(value);
+            return true;
+        }
+
+        Node newNode = new Node(value);
+        Node previous = this.get(index - 1);
+        Node current = previous.next;
+        previous.next = newNode;
+        newNode.next =  current;
+        this.length++;
+        return true;
     }
 
 }
