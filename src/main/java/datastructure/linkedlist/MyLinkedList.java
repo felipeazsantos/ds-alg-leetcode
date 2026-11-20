@@ -1,13 +1,19 @@
 package datastructure.linkedlist;
 
+import java.util.Optional;
+
 public class MyLinkedList {
 
-    static class Node {
+    public static class Node {
         int value;
         Node next;
 
         public Node(int value) {
             this.value = value;
+        }
+
+        public int getValue() {
+            return this.value;
         }
     }
 
@@ -85,6 +91,43 @@ public class MyLinkedList {
             this.head.next = temp;
         }
         this.length++;
+    }
+
+    public void removeFirst() {
+        if (this.length == 0) return;
+        if (this.length == 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            Node temp = this.head;
+            this.head = this.head.next;
+            temp.next = null;
+        }
+        this.length--;
+    }
+
+    public Node get(int index) {
+        if (index >= 0 && index < this.length) {
+            Node temp = this.head;
+            int i = 0;
+            while (i != index) {
+                temp = temp.next;
+                i++;
+            }
+            return temp;
+        }
+        throw new IndexOutOfBoundsException("index not found");
+    }
+
+    public boolean set(int index, int value) {
+        try {
+            Node node = this.get(index);
+            node.value = value;
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
 }

@@ -18,8 +18,8 @@ void main() {
 
 //    linkedList.pop();
 
-    linkedList.prepend(31);
 
-    linkedList.printList();
+
+
 }
 
