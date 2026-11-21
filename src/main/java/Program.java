@@ -18,6 +18,7 @@ void main() {
 
 //    linkedList.pop();
 
+    linkedList.reverse();
     linkedList.remove(3);
 
     linkedList.printList();

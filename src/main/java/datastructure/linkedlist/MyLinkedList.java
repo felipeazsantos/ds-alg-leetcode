@@ -173,4 +173,18 @@ public class MyLinkedList {
         return temp;
     }
 
+    public void reverse() {
+        Node temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+        Node after = null;
+        Node before = null;
+        for (int i = 0; i < this.length; i++) {
+            after = temp.next;
+            temp.next = before;
+            before = temp;
+            temp = after;
+        }
+    }
+
 }
