@@ -18,8 +18,7 @@ void main() {
 
 //    linkedList.pop();
 
-    linkedList.set(3, 44);
-    linkedList.insert(3, 114);
+    linkedList.remove(3);
 
     linkedList.printList();
 

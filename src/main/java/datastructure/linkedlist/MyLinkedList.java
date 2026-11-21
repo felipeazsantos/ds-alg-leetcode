@@ -1,7 +1,5 @@
 package datastructure.linkedlist;
 
-import java.util.Optional;
-
 public class MyLinkedList {
 
     public static class Node {
@@ -93,17 +91,30 @@ public class MyLinkedList {
         this.length++;
     }
 
-    public void removeFirst() {
-        if (this.length == 0) return;
-        if (this.length == 1) {
-            this.head = null;
-            this.tail = null;
-        } else {
-            Node temp = this.head;
-            this.head = this.head.next;
-            temp.next = null;
-        }
+    public Node removeFirst() {
+        if (this.length == 0) return null;
+        Node temp = this.head;
+        this.head = this.head.next;
+        temp.next = null;
         this.length--;
+        if (this.length == 0) this.tail = null;
+        return temp;
+    }
+
+    public Node getLast() {
+        if (this.length == 0) return null;
+        return this.get(this.length - 1);
+    }
+
+    public Node removeLast() {
+        if (this.length == 0) return null;
+        if (this.length == 1) return removeFirst();
+        Node previousLast = this.get(this.length - 2);
+        Node temp = previousLast.next;
+        previousLast.next = null;
+        this.tail = previousLast;
+        this.length--;
+        return temp;
     }
 
     public Node get(int index) {
@@ -129,13 +140,13 @@ public class MyLinkedList {
     }
 
     public boolean insert(int index, int value) {
-        if (index < 0 || index > this.length - 1) return false;
+        if (index < 0 || index > this.length) return false;
         if (index == 0) {
             prepend(value);
             return true;
         }
 
-        if (index == this.length - 1) {
+        if (index == this.length) {
             this.append(value);
             return true;
         }
@@ -147,6 +158,19 @@ public class MyLinkedList {
         newNode.next =  current;
         this.length++;
         return true;
+    }
+
+    public Node remove(int index) {
+        if (index < 0 || index >= this.length) return null;
+        if (index == 0) return removeFirst();
+        if (index == this.length - 1) return removeLast();
+
+        Node previous = this.get(index - 1);
+        Node temp = previous.next;
+        previous.next = temp.next;
+        temp.next = null;
+        this.length--;
+        return temp;
     }
 
 }
